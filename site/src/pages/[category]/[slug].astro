@@ -1,0 +1,48 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { SITE } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
+  return articles.map((entry) => {
+    const slug = entry.id.replace(/\.(md|mdx)$/, '').split('/').pop()!;
+    return {
+      params: { category: entry.data.category, slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const author = await getEntry('authors', entry.data.author);
+const authorName = author?.data.name ?? SITE.author.name;
+const authorBio = author?.data.bio ?? SITE.author.bio;
+
+// Build hreflang alternates from translationOf pairing
+const all = await getCollection('articles', ({ data }) => !data.draft);
+const partner = entry.data.translationOf
+  ? all.find((a) => {
+      const aSlug = a.id.replace(/\.(md|mdx)$/, '').split('/').pop();
+      return aSlug === entry.data.translationOf;
+    })
+  : undefined;
+
+const alternates = partner
+  ? [
+      {
+        locale: entry.data.locale,
+        href: new URL(`/${entry.data.category}/${entry.id.replace(/\.(md|mdx)$/, '').split('/').pop()}/`, SITE.url).toString(),
+      },
+      {
+        locale: partner.data.locale,
+        href: new URL(`/${partner.data.category}/${partner.id.replace(/\.(md|mdx)$/, '').split('/').pop()}/`, SITE.url).toString(),
+      },
+    ]
+  : [];
+---
+<ArticleLayout entry={entry} authorName={authorName} authorBio={authorBio} alternates={alternates}>
+  <Content />
+</ArticleLayout>

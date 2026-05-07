@@ -1,0 +1,58 @@
+---
+/**
+ * Site-wide sticky band — appears after the user has scrolled past the fold.
+ * Single nofollow link to the BINA+ packages page (internal, lead-stage),
+ * so it does NOT count against the one-follow-link-per-page policy.
+ * Dismissible per-session via sessionStorage.
+ */
+import { BINA } from '../lib/site';
+---
+<aside
+  id="stickyBand"
+  hidden
+  class="fixed bottom-0 inset-x-0 z-30 bg-ink text-paper border-t border-paper/10 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.25)]"
+  aria-label="Renovation lead capture"
+>
+  <div class="max-w-[1200px] mx-auto px-6 py-3 flex items-center justify-between gap-4 text-[13px]">
+    <p class="leading-snug">
+      <span class="font-mono uppercase tracking-[0.14em] text-paper/60 mr-3 hidden sm:inline">Renovating in KV?</span>
+      <span class="font-serif text-[15px] md:text-[17px]" style="font-weight: 400;">
+        Free site visit from <em class="text-brand-soft not-italic">{BINA.name}</em> — Shah Alam, 30km radius.
+      </span>
+    </p>
+    <div class="flex items-center gap-4 shrink-0">
+      <a
+        href="/packages/"
+        class="hidden sm:inline border-b border-paper/40 pb-0.5 hover:border-paper transition"
+      >See packages →</a>
+      <a
+        href={BINA.whatsapp}
+        rel="nofollow noopener"
+        class="bg-paper text-ink px-3 py-1.5 text-[13px] hover:bg-brand-soft transition"
+      >WhatsApp →</a>
+      <button
+        id="stickyBandDismiss"
+        aria-label="Dismiss"
+        class="text-paper/60 hover:text-paper text-[18px] leading-none -mr-1"
+      >×</button>
+    </div>
+  </div>
+</aside>
+
+<script>
+  const band = document.getElementById('stickyBand');
+  const dismiss = document.getElementById('stickyBandDismiss');
+  if (band && !sessionStorage.getItem('rkv_band_dismissed')) {
+    const reveal = () => {
+      if (window.scrollY > window.innerHeight * 0.6) {
+        band.removeAttribute('hidden');
+        window.removeEventListener('scroll', reveal);
+      }
+    };
+    window.addEventListener('scroll', reveal, { passive: true });
+  }
+  dismiss?.addEventListener('click', () => {
+    band?.setAttribute('hidden', '');
+    sessionStorage.setItem('rkv_band_dismissed', '1');
+  });
+</script>

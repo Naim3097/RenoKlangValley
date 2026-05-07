@@ -1,0 +1,74 @@
+---
+/**
+ * Editorial figure — single image with caption + photo credit.
+ * Uses Unsplash CDN with sizing/quality params to keep payload small
+ * and prevent CLS via explicit width/height ratio.
+ *
+ * Subtle warm-paper sympathy: tiny saturation drop + warm overlay so
+ * photos feel printed on the page, not pasted onto it.
+ */
+export interface Props {
+  src: string;             // Unsplash photo ID (e.g. 'photo-1556909114-f6e7ad7d3136') OR full URL
+  alt: string;
+  caption?: string;
+  credit?: string;         // e.g. 'Spacejoy / Unsplash'
+  creditHref?: string;
+  ratio?: 'wide' | 'square' | 'portrait' | '4-3';
+  priority?: boolean;
+}
+
+const {
+  src,
+  alt,
+  caption,
+  credit,
+  creditHref,
+  ratio = 'wide',
+  priority = false,
+} = Astro.props;
+
+const ratios: Record<string, string> = {
+  wide: 'aspect-[16/9]',
+  square: 'aspect-square',
+  portrait: 'aspect-[3/4]',
+  '4-3': 'aspect-[4/3]',
+};
+
+const isFullUrl = src.startsWith('http');
+const cdnUrl = isFullUrl
+  ? src
+  : `https://images.unsplash.com/${src}?auto=format&fit=crop&w=1600&q=80`;
+---
+<figure class="not-prose my-12">
+  <div class={`relative overflow-hidden bg-paper-deep ${ratios[ratio]}`}>
+    <img
+      src={cdnUrl}
+      alt={alt}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
+      class="w-full h-full object-cover"
+      style="filter: saturate(0.92) contrast(0.96);"
+    />
+    <!-- warm-paper sympathy overlay -->
+    <div
+      class="absolute inset-0 pointer-events-none mix-blend-multiply"
+      style="background: rgba(244, 238, 228, 0.08);"
+    ></div>
+  </div>
+  {(caption || credit) && (
+    <figcaption class="mt-3 flex items-baseline justify-between gap-6 text-[12px]">
+      {caption && (
+        <span class="font-serif italic text-ink-soft text-[14px] leading-snug max-w-[55ch]">
+          {caption}
+        </span>
+      )}
+      {credit && (
+        <span class="font-mono uppercase tracking-[0.14em] text-muted shrink-0">
+          {creditHref ? (
+            <a href={creditHref} rel="nofollow noopener" target="_blank" class="hover:text-ink transition">{credit}</a>
+          ) : credit}
+        </span>
+      )}
+    </figcaption>
+  )}
+</figure>

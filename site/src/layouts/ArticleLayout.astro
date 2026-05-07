@@ -1,0 +1,143 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import FaqBlock from '../components/FaqBlock.astro';
+import BinaCta from '../components/BinaCta.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { SITE } from '../lib/site';
+import {
+  articleSchema,
+  breadcrumbSchema,
+  faqSchema,
+  binaLocalBusinessSchema,
+} from '../lib/schema';
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  entry: CollectionEntry<'articles'>;
+  authorName: string;
+  authorBio: string;
+  alternates?: Array<{ locale: 'en' | 'ms'; href: string }>;
+}
+
+const { entry, authorName, authorBio, alternates = [] } = Astro.props;
+const data = entry.data;
+
+const url = new URL(Astro.url.pathname, SITE.url).toString();
+const heroUrl = data.hero?.src ? new URL(data.hero.src, SITE.url).toString() : undefined;
+
+const categoryLabel = {
+  contractors: 'Contractors',
+  townships: 'Townships',
+  checklists: 'Checklists',
+  'case-studies': 'Case studies',
+}[data.category];
+
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: categoryLabel, href: `/${data.category}/` },
+  { name: data.title },
+];
+
+// Hash crumbs to absolute URLs for schema
+const crumbsAbs = crumbs.map((c, i) => ({
+  name: c.name,
+  url: new URL(c.href ?? Astro.url.pathname, SITE.url).toString(),
+}));
+
+const publishedFmt = new Intl.DateTimeFormat('en-MY', {
+  day: 'numeric', month: 'long', year: 'numeric',
+}).format(data.publishedAt);
+const updatedFmt = data.updatedAt
+  ? new Intl.DateTimeFormat('en-MY', { day: 'numeric', month: 'long', year: 'numeric' }).format(data.updatedAt)
+  : null;
+---
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  canonical={url}
+  ogImage={heroUrl}
+  locale={data.locale}
+  alternates={alternates}
+>
+  <article class="max-w-[1200px] mx-auto px-6 pt-10 pb-20">
+    <Breadcrumb items={crumbs} />
+
+    <header class="mt-10 grid md:grid-cols-12 gap-x-10 gap-y-6">
+      <div class="md:col-span-2 md:pt-2">
+        <p class="kicker">{categoryLabel}</p>
+      </div>
+      <div class="md:col-span-9">
+        <h1 class="font-serif tracking-tight leading-[1.02] text-[36px] md:text-[64px]" style="font-weight: 400;">{data.title}</h1>
+        <p class="font-serif text-[20px] md:text-[22px] text-ink-soft mt-6 leading-[1.5] max-w-[58ch]" style="font-weight: 400;">{data.description}</p>
+        <div class="mt-8 flex flex-wrap items-baseline gap-x-5 gap-y-2 text-[12px] font-mono uppercase tracking-[0.14em] text-muted">
+          <span>By {authorName}</span>
+          <span aria-hidden="true">—</span>
+          <time datetime={data.publishedAt.toISOString()}>{publishedFmt}</time>
+          {updatedFmt && (<><span aria-hidden="true">—</span><span>Updated {updatedFmt}</span></>)}
+        </div>
+      </div>
+    </header>
+
+    <div class="border-t rule-strong mt-12"></div>
+    <div class="border-t rule mt-[3px]"></div>
+
+    {data.hero && (
+      <img
+        src={data.hero.src}
+        alt={data.heroAlt ?? ''}
+        width={data.hero.width}
+        height={data.hero.height}
+        class="w-full h-auto mt-10"
+        fetchpriority="high"
+      />
+    )}
+
+    <div class="grid md:grid-cols-12 gap-x-10 mt-12">
+      <aside class="md:col-span-2 hidden md:block">
+        <p class="index-num sticky top-8">N° — {String(data.publishedAt.getDate()).padStart(2, '0')}</p>
+      </aside>
+      <div class="md:col-span-8 prose prose-article prose-neutral max-w-none dropcap">
+        <slot />
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-x-10">
+      <div class="md:col-start-3 md:col-span-8">
+        {data.includeBinaCta && <BinaCta variant={data.publishedAt.getDate()} />}
+        <FaqBlock faqs={data.faqs} />
+
+        <section class="not-prose mt-16 border-t rule-strong pt-8 grid md:grid-cols-12 gap-x-10">
+          <div class="md:col-span-2">
+            <p class="kicker">Byline</p>
+          </div>
+          <div class="md:col-span-10 flex items-start gap-5">
+            <div class="h-14 w-14 shrink-0 border border-ink/30 grid place-items-center font-serif text-lg">
+              {authorName.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+            </div>
+            <div class="text-[15px]">
+              <p class="font-serif text-[20px]" style="font-weight: 400;">{authorName}</p>
+              <p class="text-ink-soft leading-relaxed mt-2 max-w-[58ch]">{authorBio}</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <JsonLd data={breadcrumbSchema(crumbsAbs)} />
+  <JsonLd
+    data={articleSchema({
+      url,
+      title: data.title,
+      description: data.description,
+      image: heroUrl,
+      datePublished: data.publishedAt,
+      dateModified: data.updatedAt,
+      authorName,
+      locale: data.locale,
+    })}
+  />
+  {data.faqs.length > 0 && <JsonLd data={faqSchema(data.faqs)} />}
+  {data.includeBinaCta && <JsonLd data={binaLocalBusinessSchema()} />}
+</BaseLayout>

@@ -1,0 +1,46 @@
+---
+import { SITE } from '../lib/site';
+const year = new Date().getFullYear();
+---
+<footer class="mt-32 border-t rule-strong bg-paper">
+  <div class="max-w-[1200px] mx-auto px-6 pt-16 pb-10 grid gap-12 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <p class="kicker mb-3">Colophon</p>
+      <p class="font-serif text-2xl leading-snug max-w-sm">
+        A small, independent renovation desk in Selangor.
+      </p>
+      <p class="text-sm text-ink-soft mt-5 max-w-sm leading-relaxed">
+        We write the version we wish we'd had when we were the ones standing in an empty
+        living room with a stack of contractor name cards. No paid placements. No “top 10”
+        list dressed up as advice.
+      </p>
+    </div>
+
+    <div class="md:col-span-3">
+      <p class="kicker mb-3">Sections</p>
+      <ul class="text-sm space-y-2">
+        <li><a href="/contractors/" class="hover:text-ink text-ink-soft">Contractors</a></li>
+        <li><a href="/townships/" class="hover:text-ink text-ink-soft">Townships</a></li>
+        <li><a href="/checklists/" class="hover:text-ink text-ink-soft">Checklists</a></li>
+        <li><a href="/case-studies/" class="hover:text-ink text-ink-soft">Case studies</a></li>
+      </ul>
+    </div>
+
+    <div class="md:col-span-4">
+      <p class="kicker mb-3">Desk</p>
+      <ul class="text-sm space-y-2">
+        <li><a href="/about/" class="hover:text-ink text-ink-soft">About — how we work</a></li>
+        <li><a href="/contact/" class="hover:text-ink text-ink-soft">Tip the desk</a></li>
+        <li><a href={SITE.social.instagram} rel="me noopener" class="hover:text-ink text-ink-soft">Instagram</a></li>
+        <li><a href="/rss.xml" class="hover:text-ink text-ink-soft">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t rule">
+    <div class="max-w-[1200px] mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono uppercase tracking-[0.14em] text-muted">
+      <span>© {year} — {SITE.name}</span>
+      <span>Set in Fraunces &amp; Inter — Selangor, MY</span>
+    </div>
+  </div>
+</footer>

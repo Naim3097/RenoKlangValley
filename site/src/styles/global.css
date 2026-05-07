@@ -1,0 +1,124 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Fraunces", "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, monospace;
+  --font-display: "Fraunces", Georgia, serif;
+
+  /* Warm paper palette — magazine, not SaaS */
+  /* Softer than pure black so the eye relaxes on the warm paper */
+  --color-paper: #f4eee4;
+  --color-paper-deep: #ebe2d1;
+  --color-surface: #ebe2d1;
+  --color-ink: #2a2520;          /* was #1a1714 — pulled off pure black */
+  --color-ink-soft: #5a534c;
+  --color-muted: #8a8278;
+  --color-line: #2a25201a;
+  --color-rule: #2a25201a;
+  --color-rule-strong: #2a252033;
+  --color-brand: #2c4a3a;
+  --color-brand-soft: #dfe2d7;
+  --color-accent: #b15a3c;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  /* Oldstyle figures + contextual alts — calmer numerals across the site */
+  font-feature-settings: "onum", "calt", "kern";
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, .font-serif, .font-display {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 96, "SOFT" 50;  /* more SOFT so terminals don't stab */
+  letter-spacing: -0.012em;                         /* less crunch */
+  font-weight: 420;                                 /* lighter, lets the page breathe */
+  color: var(--color-ink);
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.index-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+
+::selection { background: var(--color-ink); color: var(--color-paper); }
+
+.prose-article {
+  max-width: 62ch;            /* ~62 chars — proven comfort range */
+  font-size: 17px;            /* down from 18 — less aggressive */
+  line-height: 1.78;          /* more air between lines */
+  color: var(--color-ink-soft); /* body in soft ink, headings stay full ink */
+}
+.prose-article p { font-family: var(--font-sans); margin: 0 0 1.25em; }
+.prose-article > p:first-of-type {
+  font-size: 1.12rem;
+  line-height: 1.65;
+  color: var(--color-ink);
+}
+.prose-article h2 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  margin-top: 2.4em;
+  margin-bottom: 0.55em;
+  font-weight: 420;
+  color: var(--color-ink);
+}
+.prose-article h3 { font-family: var(--font-serif); font-size: 1.22rem; font-weight: 450; color: var(--color-ink); margin-top: 2em; }
+.prose-article a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-rule-strong);
+}
+.prose-article a:hover { text-decoration-color: var(--color-ink); color: var(--color-brand); }
+.prose-article ul > li::marker { color: var(--color-muted); }
+.prose-article blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  border-left: 2px solid var(--color-ink);
+  padding-left: 1.25rem;
+  margin: 2rem 0;
+  color: var(--color-ink);
+  font-weight: 400;
+}
+.prose-article table { font-size: 15px; }
+.prose-article th { font-weight: 500; text-align: left; }
+.prose-article hr { border-color: var(--color-rule); margin: 2.5rem 0; }
+
+.dropcap > p:first-of-type::first-letter {
+  font-family: var(--font-serif);
+  float: left;
+  font-size: 3.8rem;            /* down from 4.4 — less shouty */
+  line-height: 0.88;
+  padding: 0.45rem 0.55rem 0 0;
+  font-weight: 420;
+  color: var(--color-ink);
+  font-variation-settings: "opsz" 144, "SOFT" 70;
+}

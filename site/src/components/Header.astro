@@ -1,0 +1,62 @@
+---
+import { SITE } from '../lib/site';
+
+const navItems = [
+  { label: 'Contractors', href: '/contractors/' },
+  { label: 'Townships', href: '/townships/' },
+  { label: 'Checklists', href: '/checklists/' },
+  { label: 'Case studies', href: '/case-studies/' },
+  { label: 'Packages', href: '/packages/', accent: true },
+];
+
+const issue = new Intl.DateTimeFormat('en-MY', { month: 'long', year: 'numeric' }).format(new Date());
+---
+<header class="bg-paper relative z-40">
+  <!-- Top meta strip -->
+  <div class="border-b rule">
+    <div class="max-w-[1200px] mx-auto px-6 h-8 flex items-center justify-between text-[11px] font-mono text-muted">
+      <span class="uppercase tracking-[0.14em]">Klang Valley · Edition {issue}</span>
+      <a href="/about/" class="hidden md:inline uppercase tracking-[0.14em] hover:text-ink transition">Editorial Note →</a>
+    </div>
+  </div>
+
+  <!-- Masthead -->
+  <div class="max-w-[1200px] mx-auto px-6 pt-8 pb-6 md:pt-10 md:pb-8 flex items-end justify-between gap-6">
+    <a href="/" class="block leading-none" aria-label={`${SITE.name} home`}>
+      <span class="font-serif text-[34px] md:text-[44px] tracking-tight" style="font-variation-settings: 'opsz' 144, 'SOFT' 50; font-weight: 400;">
+        Reno&nbsp;<em class="not-italic text-brand">Klang&nbsp;Valley</em>.
+      </span>
+    </a>
+    <nav aria-label="Primary" class="hidden md:block">
+      <ul class="flex items-center gap-7 text-[13px]">
+        {navItems.map((n) => (
+          <li><a href={n.href} class={`${n.accent ? 'text-brand font-medium' : 'text-ink-soft hover:text-ink'} transition border-b border-transparent hover:border-ink pb-0.5`}>{n.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <button id="navToggle" class="md:hidden p-2 -mr-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+  </div>
+  <div class="border-b rule-strong" style="border-bottom-width: 1px;"></div>
+  <div class="border-b rule mt-[3px]"></div>
+
+  <nav id="mobileNav" hidden class="md:hidden border-b rule">
+    <ul class="max-w-[1200px] mx-auto px-6 py-4 space-y-3 text-sm">
+      {navItems.map((n) => (
+        <li><a href={n.href} class={`block py-1 ${n.accent ? 'text-brand' : 'text-ink-soft'}`}>{n.label}</a></li>
+      ))}
+      <li><a href="/about/" class="block py-1 text-ink-soft">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('navToggle');
+  const nav = document.getElementById('mobileNav');
+  btn?.addEventListener('click', () => {
+    const open = nav?.hasAttribute('hidden');
+    if (open) nav?.removeAttribute('hidden'); else nav?.setAttribute('hidden', '');
+    btn.setAttribute('aria-expanded', String(!!open));
+  });
+</script>

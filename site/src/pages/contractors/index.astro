@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import BinaCta from '../../components/BinaCta.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { getCollection } from 'astro:content';
+import { breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../lib/site';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft && data.locale === 'en' && data.category === 'contractors'))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Contractors' },
+];
+---
+<BaseLayout
+  title="Klang Valley Renovation Contractor Directory 2026"
+  description="Independent reviews and shortlists of renovation contractors across Shah Alam, Subang Jaya, Petaling Jaya, Damansara and the wider Klang Valley."
+>
+  <section class="max-w-[1200px] mx-auto px-6 pt-10 pb-12">
+    <Breadcrumb items={crumbs} />
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-8 mt-10">
+      <div class="md:col-span-2">
+        <p class="kicker">N° 01 — Desk</p>
+      </div>
+      <div class="md:col-span-9">
+        <h1 class="font-serif tracking-tight leading-[1.02] text-[40px] md:text-[68px]" style="font-weight: 400;">
+          Contractors, vetted the slow way.
+        </h1>
+        <p class="font-serif text-[20px] md:text-[22px] text-ink-soft mt-7 leading-[1.5] max-w-[58ch]" style="font-weight: 400;">
+          Most directories you’ll find online are pay-to-list. Ours isn’t. We sit down with
+          each firm, walk an active site, and read the contract before we write anything
+          down. The pieces below are the working notes from that process.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="border-t rule-strong"></div>
+    <div class="border-t rule mt-[3px]"></div>
+  </div>
+
+  <section class="max-w-[1200px] mx-auto px-6 py-12">
+    <div class="grid md:grid-cols-12 gap-x-10 mb-8">
+      <p class="md:col-span-2 kicker">Index</p>
+      <p class="md:col-span-10 text-ink-soft text-[14px]">All contractor pieces. Newest at the top.</p>
+    </div>
+    <ol class="divide-y rule border-y rule-strong">
+      {articles.map((a, i) => {
+        const slug = a.id.replace(/\.(md|mdx)$/, '').split('/').pop();
+        return (
+          <li>
+            <a href={`/contractors/${slug}/`} class="group grid grid-cols-12 gap-4 py-7 items-baseline">
+              <span class="index-num col-span-2 md:col-span-1">{String(i + 1).padStart(2, '0')}</span>
+              <span class="font-serif text-[22px] md:text-[26px] leading-[1.2] col-span-10 md:col-span-9 group-hover:text-brand transition" style="font-weight: 400;">
+                {a.data.title}
+              </span>
+              <span class="hidden md:inline col-span-2 text-[12px] font-mono uppercase tracking-[0.14em] text-muted text-right">Read →</span>
+              <p class="col-span-12 md:col-start-2 md:col-span-9 text-[14px] text-muted leading-relaxed line-clamp-2 -mt-2">{a.data.description}</p>
+            </a>
+          </li>
+        );
+      })}
+    </ol>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6">
+    <div class="grid md:grid-cols-12 gap-x-10">
+      <div class="md:col-start-3 md:col-span-8">
+        <BinaCta
+          variant={2}
+          context="If you’d rather skip the shortlist circus and have one team carry both the design and the build — the way most homeowners actually want it to work — we keep recommending"
+        />
+      </div>
+    </div>
+  </section>
+
+  <JsonLd data={breadcrumbSchema(crumbs.map((c) => ({ name: c.name, url: new URL(c.href ?? Astro.url.pathname, SITE.url).toString() })))} />
+</BaseLayout>

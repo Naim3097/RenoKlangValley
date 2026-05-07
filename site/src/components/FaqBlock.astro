@@ -1,0 +1,27 @@
+---
+export interface Props {
+  faqs: Array<{ q: string; a: string }>;
+  heading?: string;
+}
+const { faqs, heading = 'Things people ask us' } = Astro.props;
+---
+{faqs.length > 0 && (
+  <section class="not-prose mt-16 border-t rule-strong pt-10">
+    <div class="flex items-baseline justify-between gap-6 mb-8">
+      <h2 class="font-serif text-[28px] md:text-[34px] tracking-tight leading-[1.1]">{heading}</h2>
+      <span class="index-num hidden md:inline">N° — FAQ</span>
+    </div>
+    <div class="divide-y rule">
+      {faqs.map((f, i) => (
+        <details class="group py-5">
+          <summary class="cursor-pointer list-none flex items-start gap-5">
+            <span class="index-num pt-1 w-8 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+            <span class="font-serif text-[19px] leading-snug flex-1">{f.q}</span>
+            <span class="text-muted transition group-open:rotate-45 text-2xl leading-none pt-0.5">+</span>
+          </summary>
+          <div class="pl-13 pr-8 mt-4 text-ink-soft leading-relaxed text-[15px] max-w-[60ch]" style="padding-left: 3.25rem;">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </section>
+)}

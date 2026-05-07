@@ -1,0 +1,11 @@
+---
+/**
+ * Renders a JSON-LD <script> tag.
+ * Use one helper per schema type to keep usage clean.
+ */
+export interface Props {
+  data: Record<string, unknown>;
+}
+const { data } = Astro.props;
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

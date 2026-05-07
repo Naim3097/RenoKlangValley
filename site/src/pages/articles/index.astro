@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft && data.locale === 'en'))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+---
+<BaseLayout
+  title="All articles"
+  description="Every published article on Reno Klang Valley — contractor reviews, township guides, and renovation checklists."
+>
+  <section class="max-w-[1200px] mx-auto px-6 pt-12 pb-16">
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-6 mb-10">
+      <p class="md:col-span-2 kicker">Archive</p>
+      <h1 class="md:col-span-9 font-serif text-[40px] md:text-[64px] tracking-tight leading-[1.02]" style="font-weight: 400;">
+        Everything we’ve published, in order.
+      </h1>
+    </div>
+
+    <div class="max-w-[1200px] mx-auto">
+      <div class="border-t rule-strong"></div>
+      <div class="border-t rule mt-[3px]"></div>
+    </div>
+
+    <ol class="divide-y rule">
+      {articles.map((a, i) => {
+        const slug = a.id.replace(/\.(md|mdx)$/, '').split('/').pop();
+        const fmt = new Intl.DateTimeFormat('en-MY', { day: 'numeric', month: 'short', year: 'numeric' }).format(a.data.publishedAt);
+        return (
+          <li>
+            <a href={`/${a.data.category}/${slug}/`} class="group grid grid-cols-12 gap-4 py-7 items-baseline">
+              <span class="index-num col-span-2 md:col-span-1">{String(i + 1).padStart(2, '0')}</span>
+              <span class="kicker col-span-10 md:col-span-2">{a.data.category}</span>
+              <span class="font-serif text-[19px] md:text-[22px] leading-[1.25] col-span-12 md:col-span-7 group-hover:text-brand transition" style="font-weight: 400;">
+                {a.data.title}
+              </span>
+              <time datetime={a.data.publishedAt.toISOString()} class="text-[12px] font-mono text-muted col-span-12 md:col-span-2 md:text-right">{fmt}</time>
+            </a>
+          </li>
+        );
+      })}
+    </ol>
+  </section>
+</BaseLayout>

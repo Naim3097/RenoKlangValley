@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft && data.locale === 'en' && data.category === 'case-studies'))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Case studies' },
+];
+---
+<BaseLayout
+  title="Klang Valley Renovation Case Studies"
+  description="Real before-and-after renovation case studies from Klang Valley homes — what was done, what it cost, what we'd change."
+>
+  <section class="max-w-[1200px] mx-auto px-6 pt-10 pb-12">
+    <Breadcrumb items={crumbs} />
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-8 mt-10">
+      <div class="md:col-span-2">
+        <p class="kicker">N° 04 — Field</p>
+      </div>
+      <div class="md:col-span-9">
+        <h1 class="font-serif tracking-tight leading-[1.02] text-[40px] md:text-[68px]" style="font-weight: 400;">
+          Real houses. Real numbers. The bits we wouldn’t do again.
+        </h1>
+        <p class="font-serif text-[20px] md:text-[22px] text-ink-soft mt-7 leading-[1.5] max-w-[58ch]" style="font-weight: 400;">
+          We follow renovations from the inspection through to the snag list. The numbers below are what people actually paid — not what the brochure said — and the lessons are the ones learnt the expensive way.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="border-t rule-strong"></div>
+    <div class="border-t rule mt-[3px]"></div>
+  </div>
+
+  <section class="max-w-[1200px] mx-auto px-6 py-12">
+    {articles.length === 0 ? (
+      <p class="text-muted">First case studies publishing soon.</p>
+    ) : (
+      <ol class="divide-y rule border-y rule-strong">
+        {articles.map((a, i) => {
+          const slug = a.id.replace(/\.(md|mdx)$/, '').split('/').pop();
+          return (
+            <li>
+              <a href={`/case-studies/${slug}/`} class="group grid grid-cols-12 gap-4 py-7 items-baseline">
+                <span class="index-num col-span-2 md:col-span-1">{String(i + 1).padStart(2, '0')}</span>
+                <span class="font-serif text-[22px] md:text-[26px] leading-[1.2] col-span-10 md:col-span-9 group-hover:text-brand transition" style="font-weight: 400;">
+                  {a.data.title}
+                </span>
+                <span class="hidden md:inline col-span-2 text-[12px] font-mono uppercase tracking-[0.14em] text-muted text-right">Read →</span>
+                <p class="col-span-12 md:col-start-2 md:col-span-9 text-[14px] text-muted leading-relaxed line-clamp-2 -mt-2">{a.data.description}</p>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    )}
+  </section>
+</BaseLayout>

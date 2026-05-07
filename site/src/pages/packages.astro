@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import JsonLd from '../components/JsonLd.astro';
+import Figure from '../components/Figure.astro';
+import { BINA, SITE } from '../lib/site';
+
+const title = 'Renovation Packages — Shah Alam & Klang Valley';
+const description =
+  'Transparent renovation package pricing from BINA+ Design & Build (Shah Alam). Three tiers from RM75k. Free site visit within 30km of Shah Alam.';
+
+const packageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Renovation and design-and-build',
+  provider: {
+    '@type': 'GeneralContractor',
+    name: BINA.fullName,
+    url: BINA.url,
+    telephone: '+60193428981',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Shah Alam',
+      addressRegion: 'Selangor',
+      addressCountry: 'MY',
+    },
+  },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Klang Valley' },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Renovation packages',
+    itemListElement: BINA.packages.map((p, i) => ({
+      '@type': 'Offer',
+      position: i + 1,
+      name: `${p.name} package`,
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        priceCurrency: 'MYR',
+        price: p.from.replace(/[^0-9]/g, ''),
+      },
+      description: `${p.idealFor}. Typical timeline ${p.timeline}.`,
+    })),
+  },
+};
+---
+<BaseLayout title={title} description={description}>
+  <JsonLd data={packageSchema} />
+
+  <!-- HERO -->
+  <section class="max-w-[1200px] mx-auto px-6 pt-12 md:pt-20 pb-16">
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-8">
+      <div class="md:col-span-1 hidden md:block">
+        <p class="index-num" style="writing-mode: vertical-rl; transform: rotate(180deg);">N° — PKG</p>
+      </div>
+      <div class="md:col-span-7">
+        <p class="kicker mb-5">Editor's pick — packages we'd send a friend to</p>
+        <h1 class="font-serif tracking-tight leading-[1.02] text-[40px] sm:text-[56px] md:text-[72px]" style="font-variation-settings: 'opsz' 144, 'SOFT' 50; font-weight: 380;">
+          The price page <em class="text-brand not-italic">most contractors won't show you.</em>
+        </h1>
+      </div>
+      <div class="md:col-span-4 md:pt-6">
+        <p class="text-[17px] leading-[1.6] text-ink-soft">
+          We asked <a href={BINA.url} class="underline underline-offset-4 decoration-rule-strong hover:decoration-ink text-ink">BINA+ Design &amp; Build</a> in Shah Alam to publish their starting prices, scope, and timelines — the way we wished every Klang Valley contractor would. Three packages. No "call for quote." No bait pricing.
+        </p>
+        <p class="text-[13px] font-mono uppercase tracking-[0.14em] text-muted mt-6">
+          Currently accepting Q3 2026 — 3 slots open
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-[1200px] mx-auto px-6">
+    <hr class="border-0 border-t border-rule-strong" />
+    <hr class="border-0 border-t border-rule mt-[3px]" />
+  </div>
+
+  <!-- PACKAGES -->
+  <section class="max-w-[1200px] mx-auto px-6 py-20">
+    <div class="grid md:grid-cols-3 gap-10">
+      {BINA.packages.map((pkg, i) => (
+        <article class={`flex flex-col border-t-2 ${pkg.featured ? 'border-brand' : 'border-ink'} pt-6`}>
+          <div class="flex items-baseline justify-between mb-3">
+            <p class="index-num">N° {String(i + 1).padStart(2, '0')}</p>
+            {pkg.featured && <p class="kicker text-brand">Most chosen</p>}
+          </div>
+          <h2 class="font-serif text-[32px] leading-tight" style="font-weight: 420;">{pkg.name}</h2>
+          <p class="text-[14px] text-muted mt-2">{pkg.idealFor}</p>
+
+          <p class="font-serif text-[40px] mt-6 mb-1" style="font-weight: 380;">
+            <span class="text-[14px] font-mono uppercase tracking-[0.14em] text-muted align-middle mr-2">From</span>
+            {pkg.from}
+          </p>
+          <p class="text-[13px] font-mono uppercase tracking-[0.14em] text-muted">{pkg.timeline}</p>
+
+          <ul class="mt-8 space-y-3 text-[15px] text-ink-soft leading-[1.55]">
+            {pkg.includes.map((line) => (
+              <li class="flex gap-3">
+                <span class="text-muted font-mono text-[12px] mt-1.5">—</span>
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-auto pt-10">
+            <a
+              href={BINA.whatsapp}
+              rel="nofollow noopener"
+              class={`inline-block border-b ${pkg.featured ? 'border-brand text-brand' : 'border-ink text-ink'} pb-0.5 text-[14px] hover:opacity-70 transition`}
+            >
+              Ask about the {pkg.name} package →
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- WHY BINA+ -->
+  <section class="bg-paper-deep border-y rule-strong">
+    <div class="max-w-[1200px] mx-auto px-6 py-20">
+      <div class="grid md:grid-cols-12 gap-x-10 gap-y-12">
+        <div class="md:col-span-4">
+          <p class="kicker mb-4">Why we recommend them</p>
+          <p class="font-serif text-[28px] md:text-[34px] leading-[1.15]" style="font-weight: 420;">
+            We've watched a lot of Shah Alam contractors. <em class="text-brand not-italic">These three things are why BINA+ stays on the list.</em>
+          </p>
+        </div>
+        <div class="md:col-span-8 grid sm:grid-cols-3 gap-8">
+          <div class="border-t-2 border-ink pt-5">
+            <p class="index-num">N° 01</p>
+            <h3 class="font-serif text-[22px] mt-2" style="font-weight: 420;">Carpentry in-house</h3>
+            <p class="text-[14px] text-ink-soft mt-3 leading-[1.6]">Their workshop is in Shah Alam. The cabinets that arrive on your site were built by people they pay every week, not a subcontractor running three jobs in Klang.</p>
+          </div>
+          <div class="border-t-2 border-ink pt-5">
+            <p class="index-num">N° 02</p>
+            <h3 class="font-serif text-[22px] mt-2" style="font-weight: 420;">One PIC the whole way</h3>
+            <p class="text-[14px] text-ink-soft mt-3 leading-[1.6]">Najiha is your contact from first site visit to handover. Not a sales person, not a rotating supervisor. The same WhatsApp thread for the entire project.</p>
+          </div>
+          <div class="border-t-2 border-ink pt-5">
+            <p class="index-num">N° 03</p>
+            <h3 class="font-serif text-[22px] mt-2" style="font-weight: 420;">Boring contracts</h3>
+            <p class="text-[14px] text-ink-soft mt-3 leading-[1.6]">Itemised quotes, written variation orders, defect liability in writing. The unglamorous paperwork that most local studios "sort out later" and you regret in month four.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEAD CTA -->
+  <section class="max-w-[1200px] mx-auto px-6 py-24">
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-10">
+      <div class="md:col-span-7">
+        <Figure
+          src="photo-1600585154340-be6161a56a0c"
+          alt="Recently renovated Malaysian terrace interior with built-in carpentry and large-format porcelain flooring"
+          caption="A handover this March — Standard package, 13 weeks, kitchen and three bathrooms in scope."
+          credit="Spacejoy / Unsplash"
+          ratio="4-3"
+        />
+        <p class="kicker mb-5">Free site visit — 30km of Shah Alam</p>
+        <h2 class="font-serif text-[36px] md:text-[52px] leading-[1.05] tracking-tight" style="font-weight: 400;">
+          Send Najiha your floor plan. <em class="text-brand not-italic">Get a real quote in 5 working days.</em>
+        </h2>
+        <p class="text-[17px] text-ink-soft mt-6 max-w-[58ch] leading-[1.65]">
+          No obligation, no follow-up spam. They'll come look at the unit, sit down with you for an hour, and go away to write up an itemised quote. If the numbers don't work, the conversation ends there.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-x-8 gap-y-4 text-[15px]">
+          <a href={BINA.whatsapp} rel="nofollow noopener" class="border-b border-ink pb-1 hover:text-brand hover:border-brand transition">
+            WhatsApp Najiha →
+          </a>
+          <a href={BINA.url} class="border-b border-rule-strong text-ink-soft pb-1 hover:text-ink hover:border-ink transition">
+            Visit binaplus.my
+          </a>
+        </div>
+      </div>
+
+      <aside class="md:col-span-5 md:border-l rule md:pl-10">
+        <p class="kicker mb-5">What to send in the first message</p>
+        <ol class="space-y-4 text-[15px] text-ink-soft">
+          <li class="flex gap-4"><span class="index-num shrink-0 pt-1">01</span><span>Property type and built-up size (e.g. <em>2-storey terrace, 2,200 sqft</em>)</span></li>
+          <li class="flex gap-4"><span class="index-num shrink-0 pt-1">02</span><span>Whether it's new launch, sub-sale, or already lived-in</span></li>
+          <li class="flex gap-4"><span class="index-num shrink-0 pt-1">03</span><span>Rough scope (kitchen + 2 baths + carpentry, full house, etc.)</span></li>
+          <li class="flex gap-4"><span class="index-num shrink-0 pt-1">04</span><span>Your budget range — even a wide one. Saves everyone time.</span></li>
+          <li class="flex gap-4"><span class="index-num shrink-0 pt-1">05</span><span>Floor plan PDF or photos if you have them</span></li>
+        </ol>
+        <p class="text-[12px] font-mono uppercase tracking-[0.14em] text-muted mt-8">
+          Disclosure — unpaid placement. We just like the work.
+        </p>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

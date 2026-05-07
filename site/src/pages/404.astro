@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page not found" description="The page you were looking for doesn't exist." noindex>
+  <section class="max-w-2xl mx-auto px-5 py-24 text-center">
+    <p class="text-xs uppercase tracking-wider text-brand font-semibold">Error 404</p>
+    <h1 class="font-display text-4xl md:text-5xl tracking-tight mt-3">This page doesn't exist.</h1>
+    <p class="text-ink/70 mt-5 leading-relaxed">It may have moved, been renamed, or never existed in the first place.</p>
+    <div class="mt-8 flex flex-wrap gap-3 justify-center">
+      <a href="/" class="rounded-full bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-brand transition">Back to home</a>
+      <a href="/contractors/" class="rounded-full border border-ink/15 px-5 py-3 text-sm hover:border-brand hover:text-brand transition">Contractor reviews</a>
+      <a href="/checklists/" class="rounded-full border border-ink/15 px-5 py-3 text-sm hover:border-brand hover:text-brand transition">Checklists</a>
+    </div>
+  </section>
+</BaseLayout>

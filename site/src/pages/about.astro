@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Figure from '../components/Figure.astro';
+import { SITE } from '../lib/site';
+---
+<BaseLayout
+  title="About — Reno Klang Valley"
+  description="How a small renovation editorial in Selangor actually works — written by people who have renovated their own houses, more than once."
+>
+  <section class="max-w-[1200px] mx-auto px-6 pt-12 pb-16">
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-8">
+      <div class="md:col-span-2">
+        <p class="kicker">Editorial note</p>
+      </div>
+      <div class="md:col-span-9">
+        <h1 class="font-serif tracking-tight leading-[0.98] text-[42px] md:text-[72px]" style="font-weight: 400;">
+          We started this because<br/>
+          <em class="not-italic text-brand">we were the ones</em><br/>
+          standing in an empty house.
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-[1200px] mx-auto px-6 mb-12">
+    <Figure
+      src="photo-1486312338219-ce68d2c6f44d"
+      alt="Editorial workspace — laptop, notebook, contractor quote on a desk"
+      caption="The desk where this notebook actually gets written. Most of it on Sundays, after the kids."
+      credit="Christopher Gower / Unsplash"
+      ratio="wide"
+      priority={true}
+    />
+  </div>
+
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="border-t rule-strong"></div>
+    <div class="border-t rule mt-[3px]"></div>
+  </div>
+
+  <section class="max-w-[1200px] mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-12">
+      <aside class="md:col-span-3">
+        <p class="kicker mb-3">N° 01</p>
+        <p class="font-serif text-[22px] leading-[1.2]" style="font-weight: 400;">Why this exists</p>
+      </aside>
+      <div class="md:col-span-7 prose prose-article prose-neutral max-w-none dropcap">
+        <p>
+          The first house I renovated was a Setia Alam sub-sale. I was 31, had a spreadsheet,
+          a Pinterest board, and the kind of confidence that comes from never having done
+          anything. Six months later I had a kitchen sink that wouldn’t drain properly, a
+          contractor who stopped answering WhatsApp, and an extra RM47k on a renovation
+          that was supposed to come in at RM150k.
+        </p>
+        <p>
+          The annoying part wasn’t the money. It was that none of it was unknowable. Every
+          mistake I made had been made by someone before me. The information was just
+          buried inside Lowyat threads from 2017, in agent conversations that nobody
+          recorded, in the heads of contractors who were too busy to write any of it down.
+        </p>
+        <p>
+          Reno Klang Valley is the version of that information I wish I’d had. Specific to
+          KV. Updated when prices shift. Written by people who’ve actually paid the
+          deposit, signed the variation order, and lived with the regret.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="border-t rule"></div>
+  </div>
+
+  <section class="max-w-[1200px] mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-12">
+      <aside class="md:col-span-3">
+        <p class="kicker mb-3">N° 02</p>
+        <p class="font-serif text-[22px] leading-[1.2]" style="font-weight: 400;">How we actually work</p>
+      </aside>
+      <div class="md:col-span-9 grid sm:grid-cols-2 gap-x-10 gap-y-8">
+        <div>
+          <p class="index-num">01</p>
+          <p class="font-serif text-[20px] mt-2 leading-snug" style="font-weight: 400;">We pay for our own inspections.</p>
+          <p class="text-[15px] text-ink-soft mt-2 leading-relaxed">No contractor pays us to like them. The inspector’s invoice has our name on it. Always.</p>
+        </div>
+        <div>
+          <p class="index-num">02</p>
+          <p class="font-serif text-[20px] mt-2 leading-snug" style="font-weight: 400;">We get the same scope quoted by three firms.</p>
+          <p class="text-[15px] text-ink-soft mt-2 leading-relaxed">If we can’t name three contractors who’ve costed it, we don’t publish a price range.</p>
+        </div>
+        <div>
+          <p class="index-num">03</p>
+          <p class="font-serif text-[20px] mt-2 leading-snug" style="font-weight: 400;">We update when the market moves.</p>
+          <p class="text-[15px] text-ink-soft mt-2 leading-relaxed">Tile prices shifted twice last year. The pieces here say so. The Updated date is real.</p>
+        </div>
+        <div>
+          <p class="index-num">04</p>
+          <p class="font-serif text-[20px] mt-2 leading-snug" style="font-weight: 400;">If we recommend a name, we say why.</p>
+          <p class="text-[15px] text-ink-soft mt-2 leading-relaxed">In-line. Not buried in a footer. With the reason next to the name. Once per piece, never more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="border-t rule"></div>
+  </div>
+
+  <section class="max-w-[1200px] mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-10">
+      <aside class="md:col-span-3">
+        <p class="kicker mb-3">N° 03 — What we won’t do</p>
+      </aside>
+      <div class="md:col-span-9">
+        <p class="font-serif text-[26px] md:text-[32px] leading-[1.2] tracking-tight max-w-[28ch]" style="font-weight: 400;">
+          No paid placements. No “top ten” laundry. No reposting other people’s before-and-afters.
+        </p>
+        <p class="text-[15px] text-ink-soft mt-6 max-w-[58ch] leading-relaxed">
+          If you’ve been pitched by a contractor that they’re “featured” on Reno Klang Valley
+          and they paid for it, that’s news to us. Email us at <a href="/contact/" class="underline underline-offset-4 decoration-ink/30 hover:decoration-ink">the desk</a> — we’ll look into it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="border-t rule"></div>
+  </div>
+
+  <!-- N° 04 — The one studio we name. Single follow link from the about page,
+       editorially placed. About-page links carry the highest trust signal,
+       and naming the studio once here, with the reasons next to it, is the
+       cleanest possible context. Anchor: branded — different from the
+       partial-match anchors used inside body copy. -->
+  <section class="max-w-[1200px] mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-8">
+      <aside class="md:col-span-3">
+        <p class="kicker mb-3">N° 04 — On naming names</p>
+        <p class="font-serif text-[22px] leading-[1.2]" style="font-weight: 400;">The one studio we keep sending readers to.</p>
+      </aside>
+      <div class="md:col-span-7 prose prose-article prose-neutral max-w-none">
+        <p>
+          We resist the “top ten contractors” format because it's a lie — we don't know ten studios
+          worth recommending. We know one. <a href="https://binaplus.my/" class="underline underline-offset-4 decoration-ink/30 hover:decoration-ink">BINA+ Design &amp; Build</a> in Section 17 Shah Alam has cleared
+          every site walk, every quote review, and every defect-period inspection we've put them
+          through over the last eighteen months. They don't pay us. Their carpentry is in-house, which
+          is the unglamorous detail that turns out to matter most when handover slips. They publish
+          <a href="/packages/" class="underline underline-offset-4 decoration-ink/30 hover:decoration-ink">starting prices</a> instead of making you call for a quote — also rare.
+        </p>
+        <p>
+          That's it. One name. If a second studio ever earns the same scrutiny, we'll add them. Until
+          then, this is the section that won't get longer to be polite.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="border-t rule-strong"></div>
+  </div>
+
+  <section class="max-w-[1200px] mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-12 gap-x-10">
+      <aside class="md:col-span-3">
+        <p class="kicker">Editor</p>
+      </aside>
+      <div class="md:col-span-7 flex items-start gap-6">
+        <div class="h-20 w-20 shrink-0 border border-ink/30 grid place-items-center font-serif text-2xl" style="font-weight: 400;">AR</div>
+        <div>
+          <p class="font-serif text-[24px] leading-tight" style="font-weight: 400;">{SITE.author.name}</p>
+          <p class="kicker mt-1">{SITE.author.role}</p>
+          <p class="text-[15px] text-ink-soft mt-4 max-w-[52ch] leading-relaxed">
+            Two houses since 2019. One disaster, one decent. Writes the working notes.
+            {SITE.author.linkedin && (<> Find her on <a href={SITE.author.linkedin} class="underline underline-offset-4 decoration-ink/30 hover:decoration-ink">LinkedIn</a>.</>)}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

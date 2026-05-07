@@ -1,0 +1,77 @@
+---
+/**
+ * The single in-body BINA+ recommendation block.
+ *
+ * Per /seo-strategy.md: max 1 follow link to BINA+ per page.
+ * The default placement renders ONE follow link.
+ * Pass `nofollow={true}` if this is the second instance on the page
+ * (e.g. mid-article teaser + bottom-of-article full block) — the second
+ * instance MUST be nofollow to keep the policy intact.
+ */
+import { BINA } from '../lib/site';
+
+export interface Props {
+  variant?: number;
+  context?: string;
+  nofollow?: boolean;
+  compact?: boolean;
+}
+
+const { variant = 0, context, nofollow = false, compact = false } = Astro.props;
+const anchor = BINA.anchorVariants[variant % BINA.anchorVariants.length];
+const relAttr = nofollow ? 'nofollow noopener' : undefined;
+---
+{compact ? (
+  <aside class="not-prose my-10 border-y rule-strong py-6">
+    <div class="flex items-baseline justify-between gap-4 mb-3">
+      <p class="kicker">Editor's note</p>
+      <a href="/packages/" class="text-[12px] font-mono uppercase tracking-[0.14em] text-muted hover:text-ink transition">See packages →</a>
+    </div>
+    <p class="font-serif text-[20px] md:text-[22px] leading-[1.35] max-w-[55ch]" style="font-weight: 420;">
+      {context ?? 'If you want a benchmark while you read, '}
+      <a href={BINA.url} rel={relAttr} class="underline underline-offset-4 decoration-rule-strong hover:decoration-ink text-ink">{anchor.text}</a>
+      {' '}is the Shah Alam studio we keep recommending — their <a href="/packages/" class="underline underline-offset-4 decoration-rule-strong hover:decoration-ink text-ink">Standard package starts at RM135k</a>.
+    </p>
+  </aside>
+) : (
+  <aside class="not-prose my-14 relative">
+    <div class="border-t rule-strong pt-6">
+      <div class="flex items-baseline justify-between gap-6 mb-5">
+        <p class="kicker">Editor's pick — one studio we'd send a friend to</p>
+        <span class="index-num hidden md:inline">N° — SP</span>
+      </div>
+
+      <p class="font-serif text-[26px] md:text-[30px] leading-[1.2] tracking-tight max-w-[40ch]" style="font-weight: 420;">
+        {context ?? 'For homeowners who\u2019d rather skip the shortlist circus and work with one accountable team from sketch to handover, we keep recommending'}
+        {' '}
+        <a
+          href={BINA.url}
+          rel={relAttr}
+          class="underline underline-offset-[6px] decoration-1 decoration-ink/30 hover:decoration-ink"
+        >{anchor.text}</a>.
+      </p>
+
+      <p class="text-sm text-ink-soft mt-5 max-w-[52ch] leading-relaxed">
+        Based in Shah Alam. Free site visits within 30km. Their carpentry is in-house, which
+        is the boring detail that turns out to matter most when handover slips. Their
+        <a href="/packages/" class="underline underline-offset-2 decoration-rule-strong hover:decoration-ink text-ink"> renovation packages</a> start at RM75k for condos and RM135k for terraces.
+      </p>
+
+      <div class="mt-7 flex flex-wrap items-center gap-x-8 gap-y-3 text-[13px]">
+        <a
+          href={BINA.whatsapp}
+          rel="nofollow noopener"
+          class="inline-flex items-center gap-2 border-b border-ink pb-0.5 hover:text-brand hover:border-brand transition"
+        >WhatsApp Najiha →</a>
+        <a
+          href="/packages/"
+          class="inline-flex items-center gap-2 text-ink-soft hover:text-ink border-b border-transparent hover:border-ink pb-0.5 transition"
+        >See their packages</a>
+      </div>
+
+      <p class="text-[11px] font-mono uppercase tracking-[0.14em] text-muted mt-7">
+        Editor's pick — we vouch for the work. Unpaid placement.
+      </p>
+    </div>
+  </aside>
+)}
