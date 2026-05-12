@@ -1,6 +1,9 @@
 ---
 title: "The Setia Alam Sub-Sale That Cost RM180k to Bring Back to Life"
 description: "A real Setia Alam sub-sale renovation case study with BINA+ Design & Build — what we found, what we spent, and the three things we'd do differently."
+heroUrl: "photo-1600566753190-17f0baa2a6c3"
+heroAlt: "Two storey terrace house exterior in a Klang Valley township"
+heroCredit: "Unsplash"
 locale: en
 category: case-studies
 pillar: false

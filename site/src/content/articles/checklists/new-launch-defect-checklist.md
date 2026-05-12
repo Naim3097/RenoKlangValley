@@ -1,6 +1,9 @@
 ---
 title: "New Launch Defect Inspection Checklist (Free Walkthrough)"
 description: "A room-by-room defect inspection checklist for Malaysian new launch homes — what to flag during DLP before the developer fixes it."
+heroUrl: "photo-1600607687939-ce8a6c25118c"
+heroAlt: "Newly built single storey home interior, ready for inspection"
+heroCredit: "Unsplash"
 locale: en
 category: checklists
 pillar: false

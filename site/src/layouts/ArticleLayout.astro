@@ -26,6 +26,14 @@ const data = entry.data;
 const url = new URL(Astro.url.pathname, SITE.url).toString();
 const heroUrl = data.hero?.src ? new URL(data.hero.src, SITE.url).toString() : undefined;
 
+// Resolve external Unsplash hero (prefers heroUrl string, falls back to bundled hero)
+const unsplashHero = data.heroUrl
+  ? (data.heroUrl.startsWith('http') ? data.heroUrl : `https://images.unsplash.com/${data.heroUrl}?auto=format&fit=crop&w=1800&q=80`)
+  : null;
+const unsplashHeroMobile = data.heroUrl
+  ? (data.heroUrl.startsWith('http') ? data.heroUrl : `https://images.unsplash.com/${data.heroUrl}?auto=format&fit=crop&w=900&q=70`)
+  : null;
+
 const categoryLabel = {
   contractors: 'Contractors',
   townships: 'Townships',
@@ -91,6 +99,27 @@ const updatedFmt = data.updatedAt
         class="w-full h-auto mt-10"
         fetchpriority="high"
       />
+    )}
+
+    {unsplashHero && !data.hero && (
+      <figure class="not-prose mt-10 -mx-6 md:mx-0">
+        <picture>
+          <source media="(max-width: 640px)" srcset={unsplashHeroMobile!} />
+          <img
+            src={unsplashHero}
+            alt={data.heroAlt ?? data.title}
+            class="w-full h-[260px] sm:h-[380px] md:h-[520px] object-cover"
+            style="filter: saturate(0.92) contrast(0.96);"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
+        {data.heroCredit && (
+          <figcaption class="mt-3 px-6 md:px-0 font-mono uppercase tracking-[0.14em] text-muted text-[11px]">
+            Photo — {data.heroCredit}
+          </figcaption>
+        )}
+      </figure>
     )}
 
     <div class="grid md:grid-cols-12 gap-x-10 mt-12">

@@ -1,6 +1,9 @@
 ---
 title: "Eco Ardence Renovation Guide — Standard Layout, Costs, What Works"
 description: "Renovation guide for Eco Ardence homeowners: standard layouts, common renovation scopes, MBSA rules, costs, and what to plan for."
+heroUrl: "photo-1600566753190-17f0baa2a6c3"
+heroAlt: "Modern terrace house at Eco Ardence Klang Valley"
+heroCredit: "Unsplash"
 locale: en
 category: townships
 pillar: false

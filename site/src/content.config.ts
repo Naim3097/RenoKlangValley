@@ -18,6 +18,10 @@ const articles = defineCollection({
       updatedAt: z.coerce.date().optional(),
       hero: image().optional(),
       heroAlt: z.string().optional(),
+      // Unsplash photo ID (e.g. 'photo-1556909114-...') OR full image URL.
+      // Preferred over `hero` for editorial articles to avoid bundling.
+      heroUrl: z.string().optional(),
+      heroCredit: z.string().optional(),
       tags: z.array(z.string()).default([]),
       faqs: z
         .array(z.object({ q: z.string(), a: z.string() }))

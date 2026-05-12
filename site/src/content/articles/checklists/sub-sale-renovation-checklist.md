@@ -1,6 +1,9 @@
 ---
 title: "Sub-Sale House Renovation Checklist (Klang Valley Edition)"
 description: "The full pre-purchase and pre-renovation checklist for sub-sale houses in the Klang Valley — what to inspect, what to ask, what to budget."
+heroUrl: "photo-1600585154340-be6161a56a0c"
+heroAlt: "Modern Malaysian living room interior after renovation"
+heroCredit: "Unsplash"
 locale: en
 category: checklists
 pillar: false

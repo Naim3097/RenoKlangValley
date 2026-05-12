@@ -1,6 +1,9 @@
 ---
 title: "Kontraktor Renovate Terbaik di Shah Alam (Ulasan Jujur 2026)"
 description: "Senarai pendek kontraktor renovate Shah Alam — disaring berdasarkan portfolio, ketelusan harga dan tempoh tanggungan kecacatan."
+heroUrl: "photo-1600607687939-ce8a6c25118c"
+heroAlt: "Rumah baru di kawasan Shah Alam"
+heroCredit: "Unsplash"
 locale: ms
 translationOf: top-renovation-contractors-shah-alam
 category: contractors

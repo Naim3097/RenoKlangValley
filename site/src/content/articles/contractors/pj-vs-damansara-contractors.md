@@ -1,6 +1,9 @@
 ---
 title: "Renovation Contractors: Petaling Jaya vs Damansara Compared"
 description: "How PJ and Damansara renovation contractors actually differ on cost, quality, scope and project management — based on real quotes."
+heroUrl: "photo-1600573472550-8090b5e0745e"
+heroAlt: "Double storey home in a Petaling Jaya neighbourhood"
+heroCredit: "Unsplash"
 locale: en
 category: contractors
 pillar: false

@@ -1,6 +1,9 @@
 ---
 title: "Bandar Rimbayu New Launch — Design Ideas for the Standard Layout"
 description: "Design and renovation ideas for Bandar Rimbayu new launch homes — working with (and around) the standard developer floor plan."
+heroUrl: "photo-1600585154340-be6161a56a0c"
+heroAlt: "Contemporary interior design in a new launch terrace home"
+heroCredit: "Unsplash"
 locale: en
 category: townships
 pillar: false

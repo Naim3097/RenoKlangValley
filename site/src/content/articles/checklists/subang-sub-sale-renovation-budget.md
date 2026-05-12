@@ -1,6 +1,9 @@
 ---
 title: "Buying Sub-Sale in Subang Jaya? Renovation Budget Guide"
 description: "Realistic renovation budgets and a step-by-step plan for Subang Jaya sub-sale buyers — covering both SS-area and USJ stock."
+heroUrl: "photo-1600566753190-17f0baa2a6c3"
+heroAlt: "Subang Jaya terrace house exterior"
+heroCredit: "Unsplash"
 locale: en
 category: checklists
 pillar: false

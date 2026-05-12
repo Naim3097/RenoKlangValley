@@ -1,6 +1,9 @@
 ---
 title: "Cyberjaya Condo Renovation — Rules, Permits, and Budget"
 description: "What to expect when renovating a Cyberjaya condo: JMB rules, MC approvals, soundproofing, and realistic budgets for 2026."
+heroUrl: "photo-1600573472550-8090b5e0745e"
+heroAlt: "Cyberjaya condominium tower exterior"
+heroCredit: "Unsplash"
 locale: en
 category: townships
 pillar: false

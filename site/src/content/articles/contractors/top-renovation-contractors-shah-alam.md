@@ -1,6 +1,9 @@
 ---
 title: "Top Renovation Contractors in Shah Alam (2026 Honest Review)"
 description: "Independent shortlist of renovation contractors in Shah Alam — vetted on portfolio, pricing transparency and how they handle defect liability."
+heroUrl: "photo-1600210492486-724fe5c67fb0"
+heroAlt: "Finished renovation kitchen in a Shah Alam home"
+heroCredit: "Unsplash"
 locale: en
 category: contractors
 pillar: false

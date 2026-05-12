@@ -1,6 +1,9 @@
 ---
 title: "Condo Renovation Rules in Malaysia — JMB and MC Approval Walkthrough"
 description: "How condo renovation approvals actually work in Malaysia — JMB, MC, deposits, drawings, contractor registration and what gets rejected."
+heroUrl: "photo-1600573472550-8090b5e0745e"
+heroAlt: "High rise condominium tower in the Klang Valley"
+heroCredit: "Unsplash"
 locale: en
 category: checklists
 pillar: false

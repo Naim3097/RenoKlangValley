@@ -1,6 +1,9 @@
 ---
 title: "Contractor Renovation Subang Jaya — Honest Reviews & What to Expect"
 description: "Independent take on hiring a renovation contractor in Subang Jaya — local quirks, MPSJ permits, expected pricing and shortlist criteria."
+heroUrl: "photo-1600210492486-724fe5c67fb0"
+heroAlt: "Renovated kitchen with custom cabinetry in a Klang Valley home"
+heroCredit: "Unsplash"
 locale: en
 category: contractors
 pillar: false

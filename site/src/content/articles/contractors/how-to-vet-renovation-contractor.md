@@ -1,6 +1,9 @@
 ---
 title: "How to Vet a Klang Valley Renovation Contractor (Red Flags Checklist)"
 description: "A 14-point red-flag checklist for vetting any Klang Valley renovation contractor before you sign a deposit cheque."
+heroUrl: "photo-1600585154340-be6161a56a0c"
+heroAlt: "Living room with planning paperwork on a coffee table"
+heroCredit: "Unsplash"
 locale: en
 category: contractors
 pillar: false

@@ -1,6 +1,9 @@
 ---
 title: "Setia Alam Renovation Guide — Sub-Sale Buyer's Playbook"
 description: "Buying sub-sale in Setia Alam? A practical renovation playbook covering common defects, budget expectations and contractor priorities."
+heroUrl: "photo-1600607687939-ce8a6c25118c"
+heroAlt: "Single storey terrace home in Setia Alam"
+heroCredit: "Unsplash"
 locale: en
 category: townships
 pillar: false

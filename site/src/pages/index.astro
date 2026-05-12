@@ -33,6 +33,12 @@ const sections = [
 const slugOf = (a: typeof articles[number]) => a.id.replace(/\.(md|mdx)$/, '').split('/').pop();
 const hrefOf = (a: typeof articles[number]) => `/${a.data.category}/${slugOf(a)}/`;
 const dateFmt = (d: Date) => new Intl.DateTimeFormat('en-MY', { day: 'numeric', month: 'short', year: 'numeric' }).format(d);
+const thumbOf = (a: typeof articles[number], w = 800) => {
+  const id = a.data.heroUrl;
+  if (!id) return null;
+  if (id.startsWith('http')) return id;
+  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=75`;
+};
 ---
 <BaseLayout
   title="Reno Klang Valley — Honest renovation guides for KV homeowners"
@@ -86,6 +92,19 @@ const dateFmt = (d: Date) => new Intl.DateTimeFormat('en-MY', { day: 'numeric', 
       <div class="grid md:grid-cols-12 gap-x-10 gap-y-12">
         <article class="md:col-span-7 md:pr-6">
           <a href={hrefOf(featured)} class="group block">
+            {thumbOf(featured, 1400) && (
+              <div class="mb-7 overflow-hidden bg-paper-deep aspect-[16/10]">
+                <img
+                  src={thumbOf(featured, 1400)!}
+                  alt={featured.data.heroAlt ?? featured.data.title}
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                  class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-700"
+                  style="filter: saturate(0.92) contrast(0.96);"
+                />
+              </div>
+            )}
             <p class="kicker mb-4">{featured.data.category}</p>
             <h2 class="font-serif text-[34px] md:text-[52px] leading-[1.04] tracking-tight max-w-[18ch] group-hover:text-brand transition" style="font-weight: 400;">
               {featured.data.title}
@@ -102,6 +121,11 @@ const dateFmt = (d: Date) => new Intl.DateTimeFormat('en-MY', { day: 'numeric', 
         <div class="md:col-span-5 md:border-l rule md:pl-10 space-y-9">
           {secondary.map((a, i) => (
             <a href={hrefOf(a)} class="group block pb-9 border-b last:border-b-0 rule">
+              {thumbOf(a, 600) && (
+                <div class="mb-4 overflow-hidden bg-paper-deep aspect-[4/3]">
+                  <img src={thumbOf(a, 600)!} alt={a.data.heroAlt ?? a.data.title} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-700" style="filter: saturate(0.92) contrast(0.96);" />
+                </div>
+              )}
               <div class="flex items-baseline gap-4 mb-2">
                 <span class="index-num">{String(i + 2).padStart(2, '0')}</span>
                 <span class="kicker">{a.data.category}</span>
@@ -159,10 +183,15 @@ const dateFmt = (d: Date) => new Intl.DateTimeFormat('en-MY', { day: 'numeric', 
       <ol class="divide-y rule border-y rule-strong">
         {rest.map((a, i) => (
           <li>
-            <a href={hrefOf(a)} class="group grid grid-cols-12 gap-4 py-6 items-baseline">
+            <a href={hrefOf(a)} class="group grid grid-cols-12 gap-4 py-6 items-center">
               <span class="index-num col-span-2 md:col-span-1">{String(i + 5).padStart(2, '0')}</span>
-              <span class="kicker col-span-10 md:col-span-2">{a.data.category}</span>
-              <span class="font-serif text-[19px] md:text-[22px] leading-[1.25] col-span-12 md:col-span-7 group-hover:text-brand transition" style="font-weight: 400;">
+              {thumbOf(a, 280) ? (
+                <div class="col-span-3 md:col-span-2 overflow-hidden bg-paper-deep aspect-[4/3]">
+                  <img src={thumbOf(a, 280)!} alt="" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" style="filter: saturate(0.92) contrast(0.96);" />
+                </div>
+              ) : <span class="hidden md:block md:col-span-2"></span>}
+              <span class="kicker col-span-7 md:col-span-2">{a.data.category}</span>
+              <span class="font-serif text-[18px] md:text-[20px] leading-[1.25] col-span-12 md:col-span-5 group-hover:text-brand transition" style="font-weight: 400;">
                 {a.data.title}
               </span>
               <span class="text-[12px] font-mono text-muted col-span-12 md:col-span-2 md:text-right">{dateFmt(a.data.publishedAt)}</span>
