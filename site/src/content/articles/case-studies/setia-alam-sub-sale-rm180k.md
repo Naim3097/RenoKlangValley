@@ -1,6 +1,6 @@
 ---
 title: "The Setia Alam Sub-Sale That Cost RM180k to Bring Back to Life"
-description: "A real Setia Alam sub-sale renovation case study with BINA+ Design & Build — what we found, what we spent, and the three things we'd do differently."
+description: "An illustrative Setia Alam sub-sale renovation case study with BINA+ Design & Build — numbers drawn from real Klang Valley quotes, property and homeowner details are composites."
 heroUrl: "photo-1600566753190-17f0baa2a6c3"
 heroAlt: "Two storey terrace house exterior in a Klang Valley township"
 heroCredit: "Unsplash"
@@ -20,7 +20,7 @@ faqs:
 includeBinaCta: true
 ---
 
-This is a real Setia Alam sub-sale renovation we documented from inspection through to handover, run by [BINA+ Design & Build](https://binaplus.my/) out of Shah Alam. Names of the homeowners changed, numbers exact.
+This is an illustrative case study of a Setia Alam sub-sale renovation, built from real Klang Valley quote data. The property details and homeowner are composites — the numbers, scope decisions, and contractor evaluation reflect actual quotes and projects in the area. Contractor: [BINA+ Design & Build](https://binaplus.my/), Shah Alam. Stock photography throughout; not the actual property.
 
 ## The property
 
@@ -42,7 +42,7 @@ This is a real Setia Alam sub-sale renovation we documented from inspection thro
     <div class="absolute inset-0 pointer-events-none mix-blend-multiply" style="background: rgba(244, 238, 228, 0.1);"></div>
   </div>
   <figcaption class="mt-3 flex items-baseline justify-between gap-6 text-[12px]">
-    <span class="font-serif italic text-ink-soft text-[14px] leading-snug max-w-[55ch]">The unit on inspection day — keys collected, original tiles, the kind of house that looks fine until you open the consumer unit.</span>
+    <span class="font-serif italic text-ink-soft text-[14px] leading-snug max-w-[55ch]">Illustration — typical sub-sale interior at inspection stage. Not the actual property. Numbers in this article are drawn from real Klang Valley quotes; property details are composites.</span>
     <span class="font-mono uppercase tracking-[0.14em] text-muted shrink-0">Photo — Unsplash</span>
   </figcaption>
 </figure>
