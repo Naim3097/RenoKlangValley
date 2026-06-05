@@ -20,7 +20,7 @@ faqs:
 includeBinaCta: true
 ---
 
-This is an illustrative case study of a Setia Alam sub-sale renovation, built from real Klang Valley quote data. The property details and homeowner are composites — the numbers, scope decisions, and contractor evaluation reflect actual quotes and projects in the area. Contractor: [BINA+ Design & Build](https://binaplus.my/), Shah Alam. Stock photography throughout; not the actual property.
+This is an illustrative case study of a Setia Alam sub-sale renovation, built from real Klang Valley quote data. The property details and homeowner are composites — the numbers, scope decisions, and contractor evaluation reflect actual quotes and projects in the area. Contractor: [BINA+ Design & Build](https://binaplusdesign.my/), Shah Alam. Stock photography throughout; not the actual property.
 
 ## The property
 

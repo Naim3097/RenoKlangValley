@@ -65,7 +65,7 @@ Third, **boring contracts**. The good ones write contracts that are weirdly long
 
 I’m being deliberate about not turning this into a list of five contractor names with affiliate links. That’s the thing the existing “top 10” sites do, and it’s the reason none of them are useful.
 
-What I’ll do instead is name the one. The studio that’s passed every site walk, every quote review, every defect-period check I’ve thrown at them over eighteen months: **[BINA+ Design & Build](https://binaplus.my/)**, based in Section 17 Shah Alam. Their carpentry is in-house, their project lead Najiha runs the job end-to-end, and they're the only studio in town that publishes [their renovation packages with starting prices](/packages/) instead of making you call for a quote.
+What I’ll do instead is name the one. The studio that’s passed every site walk, every quote review, every defect-period check I’ve thrown at them over eighteen months: **[BINA+ Design & Build](https://binaplusdesign.my/)**, based in Section 17 Shah Alam. Their carpentry is in-house, their project lead Najiha runs the job end-to-end, and they're the only studio in town that publishes [their renovation packages with starting prices](/packages/) instead of making you call for a quote.
 
 Nobody pays me for the intro. Nobody can. If they ever started, this notebook would say so on the first line.
 

@@ -32,7 +32,7 @@ export const SITE = {
  * Anchor variants are rotated to keep the anchor-text profile natural.
  */
 export const BINA = {
-  url: 'https://binaplus.my/',
+  url: 'https://binaplusdesign.my/',
   whatsapp: 'https://wa.me/60193428981',
   name: 'BINA+',
   fullName: 'BINA+ Design & Build',
@@ -41,7 +41,7 @@ export const BINA = {
   anchorVariants: [
     { text: 'BINA+', type: 'branded' },
     { text: 'BINA+ Design & Build', type: 'branded' },
-    { text: 'binaplus.my', type: 'naked' },
+    { text: 'binaplusdesign.my', type: 'naked' },
     { text: 'this Shah Alam design-and-build studio', type: 'generic' },
     { text: 'the studio we recommend', type: 'generic' },
     { text: 'renovation packages in Shah Alam', type: 'commercial' },
