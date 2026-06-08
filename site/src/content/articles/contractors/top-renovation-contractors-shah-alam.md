@@ -13,7 +13,7 @@ updatedAt: 2026-05-04
 tags: ["shah alam", "contractor", "renovation"]
 faqs:
   - q: "How much does it cost to renovate a house in Shah Alam in 2026?"
-    a: "For a standard double-storey terrace in Shah Alam, expect RM120k–RM280k for a moderate renovation including kitchen, wet areas, flooring, ceilings, wiring upgrade and basic carpentry. Full transformations with structural changes start around RM300k. For a real benchmark, BINA+'s Standard package (the studio we recommend below) starts at RM135k for a terrace — see the full breakdown at /packages/."
+    a: "For a standard double-storey terrace in Shah Alam, expect RM120k–RM280k for a moderate renovation including kitchen, wet areas, flooring, ceilings, wiring upgrade and basic carpentry. Full transformations with structural changes start around RM300k. BINA+ (the studio we recommend below) doesn't publish a flat 'standard renovation' rate — they scope per-property — but their published extension packages start at RM100k for a single-storey rear extension. See the full breakdown at /packages/."
   - q: "Should I hire a contractor in Shah Alam or one from KL?"
     a: "Local Shah Alam contractors usually win on response time, MBSA permit familiarity and lower mobilisation cost. KL-based studios sometimes win on design polish but charge a Klang Valley premium and are slower to attend site issues."
   - q: "What's a fair deposit to pay a Shah Alam renovation contractor?"

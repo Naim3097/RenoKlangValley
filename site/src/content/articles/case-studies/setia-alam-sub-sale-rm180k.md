@@ -12,7 +12,7 @@ publishedAt: 2026-04-29
 tags: ["setia alam", "sub-sale", "case study"]
 faqs:
   - q: "How much of the budget went to hidden defects?"
-    a: "About RM38k of the final RM196k — almost entirely wiring (RM14k), waterproofing redo (RM9k), kitchen sub-floor repairs (RM8k), and aircon piping replacement (RM7k). All of it was invisible at the original viewing. For reference, BINA+'s Standard package (from RM135k) assumes none of these surprises — a sub-sale property like this one would price closer to their Full Rebuild tier."
+    a: "About RM38k of the final RM196k — almost entirely wiring (RM14k), waterproofing redo (RM9k), kitchen sub-floor repairs (RM8k), and aircon piping replacement (RM7k). All of it was invisible at the original viewing. For reference, BINA+ doesn't publish a flat whole-house-refurb rate — sub-sale renos with hidden surprises like this get quoted per-property. Their published packages (RM100k–RM300k) cover extensions; interior overhauls are scoped individually."
   - q: "Was the price worth it?"
     a: "On a per-square-foot basis, yes — total all-in cost (purchase + renovation) was still 18% below comparable new launches in the same neighbourhood, with twice the land area and a mature street."
   - q: "Who was the contractor?"
@@ -106,7 +106,7 @@ Note: BINA+'s original quote was RM178k. Defect-driven scope creep added RM18k. 
 - Renegotiated price: Day 21
 - VP / key handover: Day 88
 - Demolition start: Day 95
-- Handover from contractor: Day 219 (about 18 weeks — BINA+ quoted 18–20 weeks for a Full Rebuild)
+- Handover from contractor: Day 219 (about 18 weeks — BINA+ had quoted 18–20 weeks at the first walk-through)
 - Move-in: Day 225
 
 A faster project was possible — but only if we'd compressed the design lock-in.
