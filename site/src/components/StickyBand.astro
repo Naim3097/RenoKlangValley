@@ -13,14 +13,21 @@ import { BINA } from '../lib/site';
   class="fixed bottom-0 inset-x-0 z-30 bg-ink text-paper border-t border-paper/10 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.25)]"
   aria-label="Renovation lead capture"
 >
-  <div class="max-w-[1200px] mx-auto px-6 py-3 flex items-center justify-between gap-4 text-[13px]">
-    <p class="leading-snug">
-      <span class="font-mono uppercase tracking-[0.14em] text-paper/60 mr-3 hidden sm:inline">Renovating in KV?</span>
-      <span class="font-serif text-[15px] md:text-[17px]" style="font-weight: 400;">
-        Free site visit from <em class="text-brand-soft not-italic">{BINA.name}</em> — Shah Alam, 30km radius.
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-4 text-[13px]">
+    <p class="leading-snug min-w-0">
+      {/* Compact mobile pitch — fits one line on a narrow viewport. */}
+      <span class="sm:hidden font-serif text-[14px]" style="font-weight: 400;">
+        Free site visit · <em class="text-brand-soft not-italic">{BINA.name}</em>
+      </span>
+      {/* Full pitch for sm+ screens. */}
+      <span class="hidden sm:inline">
+        <span class="font-mono uppercase tracking-[0.14em] text-paper/60 mr-3">Renovating in KV?</span>
+        <span class="font-serif text-[15px] md:text-[17px]" style="font-weight: 400;">
+          Free site visit from <em class="text-brand-soft not-italic">{BINA.name}</em> — Shah Alam, 30km radius.
+        </span>
       </span>
     </p>
-    <div class="flex items-center gap-4 shrink-0">
+    <div class="flex items-center gap-2.5 sm:gap-4 shrink-0">
       <a
         href="/packages/"
         class="hidden sm:inline border-b border-paper/40 pb-0.5 hover:border-paper transition"
@@ -28,12 +35,12 @@ import { BINA } from '../lib/site';
       <a
         href={BINA.whatsapp}
         rel="nofollow noopener"
-        class="bg-paper text-ink px-3 py-1.5 text-[13px] hover:bg-brand-soft transition"
+        class="bg-paper text-ink px-3 py-1.5 text-[13px] hover:bg-brand-soft transition whitespace-nowrap"
       >WhatsApp →</a>
       <button
         id="stickyBandDismiss"
         aria-label="Dismiss"
-        class="text-paper/60 hover:text-paper text-[18px] leading-none -mr-1"
+        class="text-paper/50 hover:text-paper text-[20px] leading-none w-6 h-6 flex items-center justify-center -mr-1"
       >×</button>
     </div>
   </div>
