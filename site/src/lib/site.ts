@@ -31,9 +31,13 @@ export const SITE = {
  * Used at most once per article (in-body, contextual).
  * Anchor variants are rotated to keep the anchor-text profile natural.
  */
+// Hub-identifying pre-fill so Najiha can attribute the lead the moment the message lands.
+// Plain English to match this hub's editorial voice (Aisyah, Klang Valley homeowner).
+const WA_PREFILL = "Hi BINA+! Came across you on Reno Klang Valley — keen to chat about renovating my place.";
+
 export const BINA = {
   url: 'https://binaplusdesign.my/',
-  whatsapp: 'https://wa.me/60193428981',
+  whatsapp: `https://wa.me/60193428981?text=${encodeURIComponent(WA_PREFILL)}`,
   name: 'BINA+',
   fullName: 'BINA+ Design & Build',
   city: 'Shah Alam, Selangor',
